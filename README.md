@@ -17,13 +17,15 @@ Here's Houdini, an awesome AI assistant that can answer your questions in two wa
 1. **Setting Up:**
 
    - You'll need some cool Python libraries like `streamlit`, `langchain`, and `PyPDF2`. Install them with `pip install streamlit langchain PyPDF2`.
-   - For the PDF Genie, you'll also need a Google Cloud AI Platform key ([https://ai.google.dev/gemini-api/docs/api-key])).  
+   - For the PDF Genie, you'll also need a Google Cloud AI Platform key ([https://ai.google.dev/gemini-api/docs/api-key]).  
 
 2. **Running the Project:**
 
    - Save the provided code as a Python file (e.g., `app.py`).
-   - Create a virtual environment using `python3 -m venv venv`
+   - Create a virtual environment using `python -m venv venv`
    - Activate the environment
+   - Install the requirements : `pip install -r requirements.txt`
+   - Setup the environment variables i.e. API keys etc.
    - Open a terminal, navigate to the file's location, and run:
      ```bash
      streamlit run app.py
