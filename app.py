@@ -171,7 +171,7 @@ def main():
             # response = agent_executor.invoke({"input": user_query})
 
             # Display response on screen
-            st.write(f"**Agent Response:** {"""response"""}")
+            st.write(f"**Agent Response: ** response")
           else:
             st.warning("Please enter a query.")
 
