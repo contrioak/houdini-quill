@@ -92,6 +92,11 @@ def get_vector_store(text_chunks):
     vector_store.save_local("faiss_vector_index")
 
 def get_conversation_chain():
+    """Create a conversational AI chain with detailed response capabilities.
+    Parameters:
+        - None
+    Returns:
+        - A conversation chain configured with a specific prompt template and generative AI model, designed to answer questions based on provided context."""
     prompt_template = """
     Answer the question as detailed as possible from the provided context, make sure to provide all the details, if the answer is not in
     provided context just say, "answer is not available in the context", don't provide the wrong answer\n\n
@@ -106,6 +111,11 @@ def get_conversation_chain():
     return chain
 
 def user_input(user_query):
+    """Fetch and process a user query to generate a conversational reply using embeddings and FAISS index.
+    Parameters:
+        - user_query (str): The user's input query that needs to be processed.
+    Returns:
+        - None: The function does not return anything, but it prints and writes the conversational reply."""
     embeddings = GoogleGenerativeAIEmbeddings(model = "models/embedding-001")
     tmp_db = FAISS.load_local("faiss_vector_index", embeddings, allow_dangerous_deserialization=True)
     docs = tmp_db.similarity_search(user_query)
@@ -117,6 +127,12 @@ def user_input(user_query):
     st.write("Reply: ", response["output_text"])
 
 def main():
+    """Set up a Streamlit application for interacting with content through two modes: "PDF Genie" and "Multisearch RAG Agent". The application uses interactive elements such as radio buttons, text inputs, file uploads, and buttons to offer functionality for both modes, allowing users to interact with PDFs and perform multi-search operations.
+    Parameters:
+        - None
+    Returns:
+        - None
+    The function initializes a Streamlit page configuration with a wide layout and an expanded sidebar. It provides two main functionalities: "PDF Genie" for asking questions related to uploaded PDF files and "Multisearch RAG Agent" for querying multiple sources like Arxiv and Wikipedia (note: some features may be restricted due to lack of credits). Users can interact through radio buttons to select the mode, input fields for questions, and buttons to process or trigger actions."""
     st.set_page_config(
         page_title="Interact with Content",
         page_icon="🌐",
